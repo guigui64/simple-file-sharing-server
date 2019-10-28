@@ -7,6 +7,7 @@
 		"start": "nodemon ./index.js",
 		"front": "cd frontend/ && npm install && npm run build",
 		"add": "node add-file.js",
+		"send2osmc": "rsync -avz frontend/build osmc:SFSS/frontend/",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "Guillaume Comte",
