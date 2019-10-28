@@ -10,7 +10,7 @@ const bcrypt = require('bcryptjs');
 const API_URL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:9999'
-    : 'http://gcomte.ddns.net:31415';
+    : 'http://gcomte.ddns.net';
 
 type File = { id: string; name: string; path: string };
 
