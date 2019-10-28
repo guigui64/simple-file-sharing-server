@@ -13,7 +13,7 @@ try {
 
 console.log('Adding a file to files.json\n')
 
-const nextId = files.length === 0 ? 0 : Math.max(...files.map(f => Number(f.id))) + 1;
+const nextId = String(files.length === 0 ? 0 : Math.max(...files.map(f => Number(f.id))) + 1);
 const password = generator.generate({
 	length: 15,
 	numbers: true,
@@ -35,7 +35,7 @@ readline.question('Title of the file? ', title => {
 
 		console.log('\nNew files.json content will be:');
 		console.log(newContent);
-		
+
 		readline.question('Confirm? [Y/n] ', yn => {
 			if (['', 'Y', 'y', 'yes', 'YES', 'Yes'].includes(yn)) {
 				fs.writeFile('files.json', newContent + '\n', err => {
@@ -51,4 +51,3 @@ readline.question('Title of the file? ', title => {
 		});
 	});
 });
-

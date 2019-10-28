@@ -9,10 +9,10 @@ const bcrypt = require('bcryptjs');
 
 const API_URL =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:9999'
+    ? 'http://localhost:64031'
     : 'http://gcomte.ddns.net';
 
-type File = { id: string; name: string; path: string };
+type File = { id: string; name: string; title: string };
 
 const validatePwd = async (
   file: File,
@@ -24,7 +24,7 @@ const validatePwd = async (
   if (res.ok) {
     const link = document.createElement('a');
     link.href = `${API_URL}/file?id=${file.id}&pwdHash=${hash}`;
-    link.setAttribute('download', `${file.path}`);
+    link.setAttribute('download', `${file.name}`);
     document.body.appendChild(link);
     link.click();
     link.parentNode!.removeChild(link);
@@ -71,7 +71,7 @@ const App: React.FC = () => {
           {files.map((f: any) => (
             <Card
               key={f.id}
-              title={f.name}
+              title={f.title}
               icon={
                 <FontAwesomeIcon
                   icon={faFileArchive}
@@ -99,7 +99,7 @@ const App: React.FC = () => {
           label={`Enter password for file '${
             selectedFileId === ''
               ? 'NO_SELECTION'
-              : files.find(f => f.id === selectedFileId)!.name
+              : files.find(f => f.id === selectedFileId)!.title
           }'`}
           placeholder='Password'
           type='password'

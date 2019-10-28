@@ -23,7 +23,7 @@
 	},
 	"nodemonConfig": {
 		"env": {
-			"PORT": "9999"
+			"PORT": "64031"
 		}
 	}
 }
