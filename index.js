@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 const files = require('./files.json');
 
 app.use(cors());
-app.use(morgan('tiny'));
+app.use(morgan('combined'));
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'frontend/build')));
